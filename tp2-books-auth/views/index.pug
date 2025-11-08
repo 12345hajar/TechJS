@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  if notFound
+    h1(class="text-2xl font-bold mb-4") Page introuvable
+    p Retour à 
+      a(href="/" class="text-blue-600 underline") l'accueil
+  else
+    h1(class="text-3xl font-bold mb-4") TP2 — Mettre tout ensemble
+    p(class="mb-6 text-gray-700")
+      | Démo: inscription/connexion avec Passport, vue protégée pour les livres, styles par Tailwind.
+    if !currentUser
+      a(href="/register" class="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg") Commencer ➜
+    else
+      a(href="/books" class="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg") Voir les livres

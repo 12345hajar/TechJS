@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1(class="text-2xl font-bold mb-4") Livres
+  p.text-gray-600.mb-6 Bienvenue #{currentUser && currentUser.name || ''} ! Cette page est protégée.
+
+  if !books || books.length === 0
+    p Aucun livre n'est disponible pour le moment.
+  else
+    ul.grid.gap-4(class="md:grid-cols-2")
+      each b in books
+        li(class="bg-white rounded-xl shadow p-4")
+          h2(class="text-lg font-semibold")= b.title
+          p.text-gray-700 Auteur: #{b.author}
+          p.text-gray-500.text-sm Année: #{b.year}

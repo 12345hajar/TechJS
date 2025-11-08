@@ -1,0 +1,27 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title #{title || 'TP2 — Books'}
+    // Tailwind via CDN pour le TP (simple)
+    script(src="https://cdn.tailwindcss.com")
+  body(class="bg-gray-50 min-h-screen flex flex-col")
+    //- Nav
+    nav(class="bg-white border-b border-gray-200")
+      .max-w-4xl.mx-auto.px-4.py-3.flex.items-center.justify-between
+        a(href="/" class="text-xl font-semibold") TP2
+        ul.flex.items-center.gap-4
+          if !currentUser
+            li: a(href="/login" class="text-blue-600 hover:underline") Connexion
+            li: a(href="/register" class="text-blue-600 hover:underline") Inscription
+          else
+            li: a(href="/books" class="text-blue-600 hover:underline") Livres
+            li
+              a(href="/logout" class="text-gray-600 hover:text-gray-900") Déconnexion
+    //- Content
+    main(class="flex-1")
+      .max-w-4xl.mx-auto.px-4.py-8
+        block content
+    footer(class="text-center text-sm text-gray-500 py-6")
+      | © #{new Date().getFullYear()} — TP2 démo (Express + Pug + Passport + MongoDB + Tailwind)

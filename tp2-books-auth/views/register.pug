@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1(class="text-2xl font-bold mb-6") Inscription
+
+  if errors && errors.length
+    .mb-4.rounded-md.bg-red-50.p-4.text-red-800
+      ul.list-disc.pl-5
+        each e in errors
+          li= e
+
+  form(action="/register" method="post" class="space-y-4 max-w-md")
+    .flex.flex-col
+      label(for="name" class="mb-1 text-sm text-gray-700") Nom
+      input(type="text" name="name" id="name" required value=values && values.name || '' class="border rounded-lg p-2")
+    .flex.flex-col
+      label(for="email" class="mb-1 text-sm text-gray-700") Email
+      input(type="email" name="email" id="email" required value=values && values.email || '' class="border rounded-lg p-2")
+    .grid.grid-cols-1.gap-4(class="md:grid-cols-2")
+      .flex.flex-col
+        label(for="password" class="mb-1 text-sm text-gray-700") Mot de passe
+        input(type="password" name="password" id="password" required class="border rounded-lg p-2")
+      .flex.flex-col
+        label(for="password2" class="mb-1 text-sm text-gray-700") Confirmer
+        input(type="password" name="password2" id="password2" required class="border rounded-lg p-2")
+    button(type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg") Créer le compte
+  p.mt-4.text-sm
+    | Vous avez déjà un compte ?
+    a(href="/login" class="text-blue-600 underline") Se connecter
