@@ -1,0 +1,11 @@
+<h3>Books after 2020</h3>
+
+@for (book of books; track $index) {
+  @if (book.year > 2020) {
+    <p>
+      {{ $index + 1 }} -
+      {{ book.name | uppercaseBook }}
+      ({{ book.year }})
+    </p>
+  }
+}
